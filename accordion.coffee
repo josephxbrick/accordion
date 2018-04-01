@@ -40,7 +40,7 @@ class exports.Accordion extends Layer
 				@expandedItem = undefined
 		@layoutItems(animateLayer)
 
-	addLayer: (layer, expandedHeight, normalHeight, clickTarget) ->
+	addItem: (layer, expandedHeight, normalHeight, clickTarget) ->
 		if not normalHeight?
 			normalHeight = layer.height
 		if not clickTarget?
