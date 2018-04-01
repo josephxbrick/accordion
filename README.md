@@ -22,8 +22,8 @@ Use the addLayer function to add layers to an accordion. These can be frames cre
 ```
 accordion.addLayer(layer, expandedHeight, normalHeight, clickTarget)
 ```
-**layer**: (required) the layer to be added
-**expandedHeight**: (required) the height of the accordion item when expanded
-**normalheight**: (optional, if not specifying the clickTarget) the height of the accordion item when contracted. Default is the height of the provided layer.
-**clickTarget**: (optional) the layer that, when clicked, expands or contracts the accordion item. Default is the provided layer.
+* **layer**: (required) the layer to be added
+* **expandedHeight**: (required) the height of the accordion item when expanded
+* **normalheight**: (optional, if not specifying the clickTarget) the height of the accordion item when contracted. Default is the height of the provided layer.
+* **clickTarget**: (optional) the layer that, when clicked, expands or contracts the accordion item. Default is the provided layer.
 
