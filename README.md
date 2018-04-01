@@ -36,3 +36,11 @@ expandItem(layer, isAnimated)
 ```
 * **layer**; the layer to expand
 * **isAnimated**: (optional) whether the accordion item animates when it opens
+
+### Contracting an Accordion Row
+Use the contractItem() function to open an accordion item.
+```
+contractItem(layer, isAnimated)
+```
+* **layer**; the layer to expand
+* **isAnimated**: (optional) boolean: whether the accordion item animates when it opens; default is true.
