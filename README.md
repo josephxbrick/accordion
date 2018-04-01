@@ -42,5 +42,5 @@ Use the contractItem() function to open an accordion item.
 ```
 contractItem(layer, isAnimated)
 ```
-* **layer**; the layer to expand
+* **layer**: the layer to expand
 * **isAnimated**: (optional) boolean: whether the accordion item animates when it opens; default is true.
