@@ -31,7 +31,7 @@ accordion.addItem(layer, expandedHeight, normalHeight, clickTarget)
 * **layer**: (required) the layer to be added
 * **expandedHeight**: (required) the height of the accordion item when expanded
 * **normalheight**: (optional if not specifying the clickTarget) the height of the accordion item when contracted. Default is the height of the provided layer.
-* **clickTarget**: (optional): the layer that when clicked expands or contracts the accordion item. Default is the provided layer.
+* **clickTarget**: (optional): the layer that when clicked expands or contracts the accordion item. Default is the provided layer. This layer must be either the layer that is added or a descendant of the layer that is added.
 ### accordion.expandItem()
 Use the expandItem() function to open an accordion item.
 ```
@@ -66,3 +66,19 @@ accordion.on "contact", (layer, newHeight, oldHeight) ->
 * **layer** The layer that contracted
 * **newHeight** The height that the layer contracts to
 * **oldHeight** The height the layer contracts from
+## Sample Code
+```
+{Accordion} = require "accordion"
+
+accordion = new Accordion
+	width: 300
+	spacing: 1
+	singleSelect: true
+# create 10 layers with random normal heights and random expanded heights.
+for i in [0...10]
+	layer = new Layer
+		width: accordion.width
+		height: Utils.randomNumber 20, 40
+		backgroundColor: Utils.randomColor(0.67)
+	accordion.addItem layer, Utils.randomNumber(40, 40 + Utils.randomNumber(50, 100))
+```
