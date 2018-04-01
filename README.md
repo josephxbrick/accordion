@@ -1,6 +1,8 @@
 # Accordion
 A Coffeescript module for creating vertical accordion controls, with an option to open only one item at a time or any number of items at a time
 
+![Accordion Image](/readme_images/accordion_image.png?raw=true "Accordion Image")
+
 ## Getting Started
 Download accordion.coffee an place it in the `/modules` folder.
 
