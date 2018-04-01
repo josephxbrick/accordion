@@ -82,3 +82,5 @@ for i in [0...10]
 		backgroundColor: Utils.randomColor(0.67)
 	accordion.addItem layer, Utils.randomNumber(40, 40 + Utils.randomNumber(50, 100))
 ```
+## Sample Framer.js Project
+* [accordion.framer](https://framer.cloud/tIdTw)
