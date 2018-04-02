@@ -78,9 +78,9 @@ accordion = new Accordion
 for i in [0...10]
 	layer = new Layer
 		width: accordion.width
-		height: Utils.randomNumber 20, 40
-		backgroundColor: Utils.randomColor(0.67)
-	accordion.addItem layer, Utils.randomNumber(40, 40 + Utils.randomNumber(50, 100))
+		height: 60
+		backgroundColor: Utils.randomColor(0.5)
+	accordion.addItem layer, 200
 ```
 ## Sample Framer.js Project
 * [accordion.framer](https://framer.cloud/tIdTw)
