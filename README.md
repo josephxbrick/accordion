@@ -4,7 +4,7 @@ A Coffeescript module for creating vertical accordion controls, with an option t
 <img src="/readme_images/accordion_example.gif" width="200">
 
 ## Getting Started
-Download accordion.coffee an place it in the `/modules` folder.
+Download accordion.coffee an place it in the `/modules` folder of your project.
 
 In your coffeescript file, include the following.
 
@@ -24,14 +24,14 @@ single = new Accordion
 * **singleExpand**: if true, only one accordion item can be opened at a time; if false, any number of items can be opened at a time
 ## Functions
 ### accordion.addItem()
-Use the addItem() function to add layers to an accordion. Can be a frame created in Design mode or a layer created in code. 
+Use the addItem() function to add a layer to an accordion. This can be a frame created in Design mode or a layer created in code. 
 ```
 accordion.addItem(layer, expandedHeight, normalHeight, clickTarget)
 ```
 * **layer**: (required) the layer to be added
 * **expandedHeight**: (required) the height of the accordion item when expanded
 * **normalheight**: (optional if not specifying the clickTarget) the height of the accordion item when contracted. Default is the height of the provided layer.
-* **clickTarget**: (optional): the layer that when clicked expands or contracts the accordion item. Default is the provided layer. This layer must be either the layer that is added or a descendant of the layer that is added.
+* **clickTarget**: (optional): the layer that when clicked expands or contracts the accordion item. Default is the layer that's being added. This layer must be either the layer that is added or a descendant of the layer that is added.
 ### accordion.expandItem()
 Use the expandItem() function to open an accordion item.
 ```
