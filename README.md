@@ -80,6 +80,7 @@ for i in [0...10]
 		width: accordion.width
 		height: 60
 		backgroundColor: Utils.randomColor(0.5)
+	Utils.labelLayer layer, "#{i+1}"
 	accordion.addItem layer, 200
 ```
 ## Sample Framer.js Project
