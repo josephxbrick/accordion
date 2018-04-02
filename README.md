@@ -74,7 +74,7 @@ accordion = new Accordion
 	width: 300
 	spacing: 1
 	singleSelect: true
-# create 10 layers with random normal heights and random expanded heights.
+# create 10 layers with normal heights of 60 and expanded heights of 200
 for i in [0...10]
 	layer = new Layer
 		width: accordion.width
