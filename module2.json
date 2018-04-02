@@ -1,8 +1,0 @@
-{
-    "name": "Accordion",
-    "description": "A Framer module for creating vertical accordion controls, with an option to open only one accordion item at a time or any number of items at a time.",
-    "author": "Joseph Brick",
-    "require": "{Accordion} = require 'accordion'",
-    "example": "example.coffee",
-    "install": "accordion.coffee"
-}
