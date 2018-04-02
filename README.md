@@ -30,14 +30,14 @@ accordion.addItem(layer, expandedHeight, normalHeight, clickTarget)
 ```
 * **layer**: (required) the layer to be added
 * **expandedHeight**: (required) the height of the accordion item when expanded
-* **normalheight**: (optional if not specifying the clickTarget) the height of the accordion item when contracted. Default is the height of the provided layer.
-* **clickTarget**: (optional): the layer that when clicked expands or contracts the accordion item. Default is the layer that's being added. This layer must be either the layer that is added or a descendant of the layer that is added.
+* **normalheight**: (optional if not specifying `clickTarget`) the height of the accordion item when contracted. Default is the height of the provided layer.
+* **clickTarget**: (optional): the layer that when clicked expands or contracts the accordion item. The default click target is the provided layer. The click target must be either the provided layer or a descendant of the provided layer.
 ### accordion.expandItem()
 Use the expandItem() function to open an accordion item.
 ```
 expandItem(layer, isAnimated)
 ```
-* **layer**; the layer to expand
+* **layer**: the layer to expand
 * **isAnimated**: (optional) boolean: whether the accordion item animates when it opens
 
 ### accordion.contractItem()
