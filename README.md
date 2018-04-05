@@ -1,5 +1,7 @@
 # Accordion
-A Framer.js module for creating vertical accordion controls, with an option to open only one item at a time or any number of items at a time
+A Framer.js module for creating vertical accordion controls, with an option to open only one item at a time or any number of items at a time.
+
+Framer sample: [accordion.framer](https://framer.cloud/tIdTw)
 
 <img src="/readme_images/accordion_example.gif" width="200">
 
