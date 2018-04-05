@@ -6,7 +6,15 @@ Framer sample: [accordion.framer](https://framer.cloud/tIdTw)
 <img src="/readme_images/accordion_example.gif" width="200">
 
 ## Getting Started
-Download accordion.coffee an place it in the `/modules` folder of your project.
+
+If you have Modules installed, or want to use Modules to add this module to you project, click the badge below.
+
+<a href='https://open.framermodules.com/Accordion'>
+    <img alt='Install with Framer Modules'
+    src='https://www.framermodules.com/assets/badge@2x.png' width='160' height='40' />
+</a>
+
+Otherwise, download accordion.coffee an place it in the `/modules` folder of your project.
 
 In your coffeescript file, include the following.
 
