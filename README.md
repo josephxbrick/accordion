@@ -16,7 +16,7 @@ If you have Modules installed, or want to use Modules to add this module to you 
 
 Note that you can hit Ctrl+C in Modules (when Accordion is the active module) to copy a code example that you can then paste into your file. 
 
-If you are not using Modules, download accordion.coffee, place it in the `/modules` folder of your project, and in your coffeescript file, include the following.
+If you are not using Modules, download `accordion.coffee`, place it in the `/modules` folder of your project, and in your coffeescript file, include the following.
 
 `{Accordion} = require "accordion"`
 
