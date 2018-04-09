@@ -13,7 +13,7 @@ for i in [0...5]
 		width: accordion.width
 		height: 50
 		backgroundColor: Utils.randomColor()
-	button = new Layer #create expansion button (optional)
+	button = new Layer
 		parent: layer
 		size: 30
 		x: 10
