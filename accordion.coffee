@@ -1,4 +1,3 @@
-# Accordion moduel for Framer
 # author: Joseph Brick
 # repository: https://github.com/josephxbrick/accordion
 
@@ -123,8 +122,8 @@ class exports.Accordion extends Layer
 		set: (value) -> @o.singleExpand = value
 	@define "spacing",
 		get: -> @o.spacing
-		set: (value) -> @o.spacing = value
-	
-	# event helpers
-	onExpand: (cb) -> @on(Events.AccordionExpand, cb)
-	onContract: (cb) -> @on(Events.AccordionContract, cb)
+		set: (value) -> 
+			@o.spacing = value
+			# avoid calling @layoutItems() upon setting spacing via constructor options
+			if @__framerInstanceInfo? 
+				@layoutItems()
