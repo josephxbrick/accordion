@@ -126,4 +126,8 @@ class exports.Accordion extends Layer
 			@o.spacing = value
 			# avoid calling @layoutItems() upon setting spacing via constructor options
 			if @__framerInstanceInfo? 
-				@layoutItems()
+				@layoutItems()	
+
+	# event helpers
+	onExpand: (cb) -> @on(Events.AccordionExpand, cb)
+	onContract: (cb) -> @on(Events.AccordionContract, cb)
