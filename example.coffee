@@ -1,3 +1,6 @@
+# author: Joseph Brick
+# repository: https://github.com/josephxbrick/accordion
+
 # create empty accordion
 accordion = new Accordion
 	width: Screen.width - 20
