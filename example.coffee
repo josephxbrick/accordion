@@ -14,6 +14,7 @@ for i in [0...5]
 		backgroundColor: Utils.randomColor()
 	expandButton = new Layer
 		parent: layer
+		name: "expand_button"
 		size: 30
 		x: 10
 		backgroundColor: "#222222"
