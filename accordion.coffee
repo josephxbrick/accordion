@@ -1,4 +1,8 @@
 class exports.Accordion extends Layer
+
+	Events.AccordionExpand  = "accordionExpand"
+	Events.AccordionContract = "accordionContract"
+
 	constructor: (@o = {}) ->
 		_.defaults @o,
 			spacing: 2
@@ -11,7 +15,7 @@ class exports.Accordion extends Layer
 
 	expandItem: (layer, animateLayer = true) ->
 		# emit the layer, its new height, and its previous height.
-		@emit "expand", layer, layer.states.expanded.height, layer.height
+		@emit(Events.AccordionExpand, layer, layer.states.expanded.height, layer.height)
 		if animateLayer
 			layer.animate "expanded"
 		else
@@ -19,7 +23,7 @@ class exports.Accordion extends Layer
 		if @o.singleExpand is true
 			@previousExpandedItem = @expandedItem
 			if @previousExpandedItem?
-				@emit "contract", @previousExpandedItem, @previousExpandedItem.states.default.height, @previousExpandedItem.height
+				@emit(Events.AccordionContract, @previousExpandedItem, @previousExpandedItem.states.default.height, @previousExpandedItem.height)
 				if animateLayer
 					@previousExpandedItem.animate "default"
 				else
@@ -29,7 +33,7 @@ class exports.Accordion extends Layer
 
 	contractItem: (layer, animateLayer = true) ->
 		# emit the layer, its new height, and its previous height.
-		@emit("contract", layer, layer.states.default.height, layer.height)
+		@emit(Events.AccordionContract, layer, layer.states.default.height, layer.height)
 		if animateLayer
 			layer.animate "default"
 		else
@@ -109,3 +113,6 @@ class exports.Accordion extends Layer
 			@animate height: runningTop - @o.spacing
 		else
 			@height = runningTop - @o.spacing
+
+	onExpand: (cb) -> @on(Events.AccordionExpand, cb)
+	onContract: (cb) -> @on(Events.AccordionContract, cb)
