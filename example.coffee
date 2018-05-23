@@ -22,3 +22,6 @@ for i in [0...5]
 	# add each layer to accordion.
 	# accordion.addItem layerToAdd, expandedHeight, normalHeight (optional: default is layerToAdd.height), clickTarget (optional: default is layerToAdd)
 	accordion.addItem layer, 200, 50, expandButton
+	
+accordion.onExpand (layer, newHeight, oldHeight) ->
+	print layer, newHeight, oldHeight
