@@ -1,3 +1,6 @@
+# author: Joseph Brick
+# repository: https://github.com/josephxbrick/accordion
+
 class exports.Accordion extends Layer
 
 	Events.AccordionExpand  = "accordionExpand"
