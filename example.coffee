@@ -19,8 +19,9 @@ for i in [0...5]
 		backgroundColor: "#222222"
 		blending: Blending.overlay
 		y: Align.center
-	# add each layer to accordion.
-	# accordion.addItem layerToAdd, expandedHeight, normalHeight (optional: default is layerToAdd.height), clickTarget (optional: default is layerToAdd)
+	### 
+	add layer to accordion, specifying 200 for expandedHeight, 50 for contracted height, and expandButton as the click target
+	###	
 	accordion.addItem layer, 200, 50, expandButton
 	
 accordion.onExpand (layer, newHeight, oldHeight) ->
