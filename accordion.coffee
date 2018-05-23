@@ -1,3 +1,4 @@
+# Accordion moduel for Framer
 # author: Joseph Brick
 # repository: https://github.com/josephxbrick/accordion
 
@@ -8,7 +9,7 @@ class exports.Accordion extends Layer
 
 	constructor: (@o = {}) ->
 		_.defaults @o,
-			spacing: 2
+			spacing: 1
 			backgroundColor: ""
 			animationOptions: time: 0.25, curve: Bezier.ease
 			singleExpand: true
@@ -23,7 +24,7 @@ class exports.Accordion extends Layer
 			layer.animate "expanded"
 		else
 			layer.stateSwitch "expanded"
-		if @o.singleExpand is true
+		if @singleExpand is true
 			@previousExpandedItem = @expandedItem
 			if @previousExpandedItem?
 				@emit(Events.AccordionContract, @previousExpandedItem, @previousExpandedItem.states.default.height, @previousExpandedItem.height)
@@ -41,7 +42,7 @@ class exports.Accordion extends Layer
 			layer.animate "default"
 		else
 			layer.stateSwitch "default"
-		if @o.singleExpand is true
+		if @singleExpand is true
 			if @expandedItem is layer # deselecting selected item
 				@previousExpandedItem = layer
 				@expandedItem = undefined
@@ -56,7 +57,7 @@ class exports.Accordion extends Layer
 		if verticalPageIndex is 0
 			top = 0
 		else
-			top = _.last(@children).maxY + @o.spacing
+			top = _.last(@children).maxY + @spacing
 		layer.props =
 			width: @width
 			height: normalHeight
@@ -90,7 +91,7 @@ class exports.Accordion extends Layer
 	layoutItems: (animateLayer = true)->
 		runningTop = 0
 		for tile in @children
-			if @o.singleExpand is true
+			if @singleExpand is true
 				newY = tile._originalY
 				# happens
 				if not @expandedItem? # if current selection was deselected
@@ -111,11 +112,19 @@ class exports.Accordion extends Layer
 				else
 					tile.y = runningTop
 
-			runningTop += tile.states[tile.states.current.name].height + @o.spacing
+			runningTop += tile.states[tile.states.current.name].height + @spacing
 		if animateLayer
-			@animate height: runningTop - @o.spacing
+			@animate height: runningTop - @spacing
 		else
-			@height = runningTop - @o.spacing
-
+			@height = runningTop - @spacing
+			
+	@define "singleExpand",
+		get: -> @o.singleExpand
+		set: (value) -> @o.singleExpand = value
+	@define "spacing",
+		get: -> @o.spacing
+		set: (value) -> @o.spacing = value
+	
+	# event helpers
 	onExpand: (cb) -> @on(Events.AccordionExpand, cb)
 	onContract: (cb) -> @on(Events.AccordionContract, cb)
