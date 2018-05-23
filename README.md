@@ -59,19 +59,19 @@ contractItem(layer, isAnimated)
 * **isAnimated**: (optional) boolean: whether the accordion item animates when it closes; default is true.
 
 ## Events
-### accordion.on "expand", ->
+### accordion.onExpand ->
 The expand message is fired when an accordion item expands.
 ```
-accordion.on "expand", (layer, newHeight, oldHeight) ->
+accordion.onExpand (layer, newHeight, oldHeight) ->
 ```
 * **layer** The layer that expanded
 * **newHeight** The height that the layer expands to
 * **oldHeight** The height the layer expands from
 
-### accordion.on "contract", ->
-The contract message is fired when an accordion item contracts.
+### accordion.onContract ->
+The contract message is fired when an accordion item contracts, either upon contracting an open accordion item, or, in the case of a singleExpand accordion, upon an accordion item closing because another accordion item was opened.
 ```
-accordion.on "contact", (layer, newHeight, oldHeight) ->
+accordion.onContract (layer, newHeight, oldHeight) ->
 ```
 * **layer** The layer that contracted
 * **newHeight** The height that the layer contracts to
