@@ -88,21 +88,32 @@ accordion.onContract (layer, newHeight, oldHeight) ->
 * **oldHeight** The height the layer contracted from
 ## Sample Code
 ```
-{Accordion} = require "accordion"
-
+# create empty accordion that expands only one item at a time
 accordion = new Accordion
-	width: 300
-	spacing: 1
-	singleSelect: true
+	width: Screen.width - 20
+	x: Align.center
+	y: 10
+	singleExpand: true
 	
-# create 10 layers with normal heights of 60 and expanded heights of 200
-for i in [0...10]
+# Add 5 items to the accordion. Each item will have button inside to use as the expand/contract button
+for i in [0...5]
+	# make accordion item
 	layer = new Layer
+		name: "layer_#{i}"
 		width: accordion.width
-		height: 60
-		backgroundColor: Utils.randomColor(0.5)
-	Utils.labelLayer layer, "#{i+1}"
-	accordion.addItem layer, 200
+		height: 50
+		backgroundColor: Utils.randomColor()
+	# make expand/contract button as child of layer above
+	expandButton = new Layer
+		parent: layer
+		name: "expand_button"
+		size: 30
+		x: 10
+		backgroundColor: "#222222"
+		blending: Blending.overlay
+		y: Align.center
+	# add layer to accordion: expandedHeight:200, contractedHeight:50, clickTarget:expandButton
+	accordion.addItem layer, 200, 50
 ```
 ## Sample Framer.js Project
 * [accordion.framer](https://framer.cloud/tIdTw)
