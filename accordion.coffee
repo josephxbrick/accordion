@@ -1,7 +1,7 @@
 # author: Joseph Brick
 # repository: https://github.com/josephxbrick/accordion
 
-class Accordion extends Layer
+class exports.Accordion extends Layer
 
 	# events
 	Events.AccordionItemExpanded  = "accordionExpand"
