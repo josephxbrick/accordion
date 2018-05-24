@@ -10,11 +10,13 @@ accordion = new Accordion
 	
 # Add 5 items to the accordion. Each item will have button inside to use as the expand/contract button
 for i in [0...5]
+	# make accordion item
 	layer = new Layer
 		name: "layer_#{i}"
 		width: accordion.width
 		height: 50
 		backgroundColor: Utils.randomColor()
+	# make expand/contract button as child of layer above
 	expandButton = new Layer
 		parent: layer
 		name: "expand_button"
@@ -23,9 +25,7 @@ for i in [0...5]
 		backgroundColor: "#222222"
 		blending: Blending.overlay
 		y: Align.center
-	### 
-	add layer to accordion, specifying 200 for expandedHeight, 50 for contracted height, and expandButton as the click target
-	###	
+	# add layer to accordion: expandedHeight:200, contractedHeight:50, clickTarget:expandButton
 	accordion.addItem layer, 200, 50, expandButton
 	
 accordion.onExpand (layer, newHeight, oldHeight) ->
