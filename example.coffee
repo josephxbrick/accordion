@@ -27,10 +27,6 @@ for i in [0...5]
 		y: Align.center
 	# add layer to accordion: expandedHeight:200, contractedHeight:50, clickTarget:expandButton
 	accordion.addItem layer, 200, 50, expandTarget
-
-# handle onItemTapped event
-accordion.onItemTapped (layer, index, tappedState) ->
-	print "#{layer.name} tapped; index:#{index}; tappedState:#{tappedState}"
 	
 # handle onItemExpanded event
 accordion.onItemExpanded (layer, newHeight, oldHeight) ->
