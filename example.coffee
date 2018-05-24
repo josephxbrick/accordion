@@ -26,7 +26,7 @@ for i in [0...5]
 		blending: Blending.overlay
 		y: Align.center
 	# add layer to accordion: expandedHeight:200, contractedHeight:50, clickTarget:expandButton
-	accordion.addItem layer, 200, 50, expandTarget
+	accordion.addItem layer, 200, 50, expandButton
 	
 # handle onItemExpanded event
 accordion.onItemExpanded (layer, newHeight, oldHeight) ->
