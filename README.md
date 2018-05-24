@@ -60,15 +60,6 @@ contractItem(layer, isAnimated)
 
 ## Events
 
-### accordion.onItemTapped ->
-Event is fired when an accordion item is tapped.
-```
-accordion.onItemTapped (layer, index, tappedState) ->
-```
-* **layer** The layer of the accordion item that was tapped (which may be the anscestor of the item's clickTarget layer)
-* **index** The zero-based index of the accordion layer
-* **tappedState** The state the accordion layer was in when tapped: `"contracted"` or `"expanded"`
-
 ### accordion.onItemExpanded ->
 Event is fired when an accordion item begins to expand.
 ```
