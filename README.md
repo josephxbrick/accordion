@@ -59,23 +59,33 @@ contractItem(layer, isAnimated)
 * **isAnimated**: (optional) boolean: whether the accordion item animates when it closes; default is true.
 
 ## Events
-### accordion.onExpand ->
-The expand message is fired when an accordion item expands.
+
+### accordion.onItemTapped ->
+Event is fired when an accordion item is tapped.
 ```
-accordion.onExpand (layer, newHeight, oldHeight) ->
+accordion.onItemTapped (layer, index, tappedState) ->
+```
+* **layer** The accordion layer that was tapped, which may differ from the clickTarget layer.
+* **index** The zero-based index of the accordion layer
+* **tappedState** The state the accordion layer was in when tapped: `"contracted"` or `"expanded"`
+
+### accordion.onItemExpanded ->
+Event is fired when an accordion item begins to expand.
+```
+accordion.onItemExpanded (layer, newHeight, oldHeight) ->
 ```
 * **layer** The layer that expanded
-* **newHeight** The height that the layer expands to
-* **oldHeight** The height the layer expands from
+* **newHeight** The height that the layer will expand to
+* **oldHeight** The height the layer expanded from
 
-### accordion.onContract ->
-The contract message is fired when an accordion item contracts, either upon contracting an open accordion item, or, in the case of a singleExpand accordion, upon an accordion item closing because another accordion item was opened.
+### accordion.onItemContracted ->
+Event is fired when an accordion item begins to contract, either upon contracting an open accordion item, or, in the case of a singleExpand accordion, upon an accordion item closing because another accordion item was opened.
 ```
 accordion.onContract (layer, newHeight, oldHeight) ->
 ```
 * **layer** The layer that contracted
-* **newHeight** The height that the layer contracts to
-* **oldHeight** The height the layer contracts from
+* **newHeight** The height that the layer will contract to
+* **oldHeight** The height the layer contracted from
 ## Sample Code
 ```
 {Accordion} = require "accordion"
