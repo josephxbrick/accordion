@@ -65,7 +65,7 @@ Event is fired when an accordion item is tapped.
 ```
 accordion.onItemTapped (layer, index, tappedState) ->
 ```
-* **layer** The accordion layer that was tapped, which may differ from the clickTarget layer.
+* **layer** The accordion layer that was tapped (which may be the anscestor of the item's clickTarget)
 * **index** The zero-based index of the accordion layer
 * **tappedState** The state the accordion layer was in when tapped: `"contracted"` or `"expanded"`
 
