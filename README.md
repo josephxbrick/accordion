@@ -65,7 +65,7 @@ Event is fired when an accordion item is tapped.
 ```
 accordion.onItemTapped (layer, index, tappedState) ->
 ```
-* **layer** The accordion layer that was tapped (which may be the anscestor of the item's clickTarget)
+* **layer** The layer of the accordion item that was tapped (which may be the anscestor of the item's clickTarget layer)
 * **index** The zero-based index of the accordion layer
 * **tappedState** The state the accordion layer was in when tapped: `"contracted"` or `"expanded"`
 
@@ -79,7 +79,7 @@ accordion.onItemExpanded (layer, newHeight, oldHeight) ->
 * **oldHeight** The height the layer expanded from
 
 ### accordion.onItemContracted ->
-Event is fired when an accordion item begins to contract, either upon contracting an open accordion item, or, in the case of a singleExpand accordion, upon an accordion item closing because another accordion item was opened.
+Event is fired when an accordion item begins to contract, either upon contracting an open accordion item, or, in the case of a singleExpand accordion, upon an accordion item contracting because another accordion item expanded.
 ```
 accordion.onContract (layer, newHeight, oldHeight) ->
 ```
