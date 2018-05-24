@@ -113,7 +113,7 @@ for i in [0...5]
 		blending: Blending.overlay
 		y: Align.center
 	# add layer to accordion: expandedHeight:200, contractedHeight:50, clickTarget:expandButton
-	accordion.addItem layer, 200, 50
+	accordion.addItem layer, 200, 50, expandButton
 ```
 ## Sample Framer.js Project
 * [accordion.framer](https://framer.cloud/tIdTw)
