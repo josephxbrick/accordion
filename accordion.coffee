@@ -6,7 +6,6 @@ class exports.Accordion extends Layer
 	# events
 	Events.AccordionItemExpanded  = "accordionExpand"
 	Events.AccordionItemContracted = "accordionContract"
-	Events.AccordionItemTapped = "accordionTapped"
 
 	constructor: (@o = {}) ->
 		_.defaults @o,
@@ -85,9 +84,6 @@ class exports.Accordion extends Layer
 				layer = layer.parent
 				if layer.parent is null
 					throw new Error "The click target must be the child of an Accordion layer."
-	
-			# trigger onItemTapped ->
-			@emit(Events.AccordionItemTapped, layer, layer.ordinal, layer.states.current.name)
 			
 			if layer.states.current.name in ["default","contracted"]
 				layer.parent.expandItem layer
@@ -139,4 +135,3 @@ class exports.Accordion extends Layer
 	# event helpers
 	onItemExpanded: (cb) -> @on(Events.AccordionItemExpanded, cb)
 	onItemContracted: (cb) -> @on(Events.AccordionItemContracted, cb)
-	onItemTapped: (cb) -> @on(Events.AccordionItemTapped, cb)
