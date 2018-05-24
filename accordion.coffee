@@ -1,10 +1,12 @@
 # author: Joseph Brick
 # repository: https://github.com/josephxbrick/accordion
 
-class exports.Accordion extends Layer
+class Accordion extends Layer
 
-	Events.AccordionExpand  = "accordionExpand"
-	Events.AccordionContract = "accordionContract"
+	# events
+	Events.AccordionItemExpanded  = "accordionExpand"
+	Events.AccordionItemContracted = "accordionContract"
+	Events.AccordionItemTapped = "accordionTapped"
 
 	constructor: (@o = {}) ->
 		_.defaults @o,
@@ -18,7 +20,7 @@ class exports.Accordion extends Layer
 
 	expandItem: (layer, animateLayer = true) ->
 		# emit the layer, its new height, and its previous height.
-		@emit(Events.AccordionExpand, layer, layer.states.expanded.height, layer.height)
+		@emit(Events.AccordionItemExpanded, layer, layer.states.expanded.height, layer.height)
 		if animateLayer
 			layer.animate "expanded"
 		else
@@ -26,17 +28,17 @@ class exports.Accordion extends Layer
 		if @singleExpand is true
 			@previousExpandedItem = @expandedItem
 			if @previousExpandedItem?
-				@emit(Events.AccordionContract, @previousExpandedItem, @previousExpandedItem.states.default.height, @previousExpandedItem.height)
+				@emit(Events.AccordionItemContracted, @previousExpandedItem, @previousExpandedItem.states.default.height, @previousExpandedItem.height)
 				if animateLayer
-					@previousExpandedItem.animate "default"
+					@previousExpandedItem.animate "contracted"
 				else
-					@previousExpandedItem.stateSwitch "default"
+					@previousExpandedItem.stateSwitch "contracted"
 			@expandedItem = layer
 		@layoutItems(animateLayer)
 
 	contractItem: (layer, animateLayer = true) ->
 		# emit the layer, its new height, and its previous height.
-		@emit(Events.AccordionContract, layer, layer.states.default.height, layer.height)
+		@emit(Events.AccordionItemContracted, layer, layer.states.default.height, layer.height)
 		if animateLayer
 			layer.animate "default"
 		else
@@ -53,6 +55,7 @@ class exports.Accordion extends Layer
 		if not clickTarget?
 			clickTarget = layer
 		verticalPageIndex = @children.length
+		layer.ordinal = @children.length
 		if verticalPageIndex is 0
 			top = 0
 		else
@@ -64,17 +67,17 @@ class exports.Accordion extends Layer
 			y: top
 			parent: @
 		layer.states =
-			default:
+			contracted:
 				height: normalHeight
 			expanded:
 				height: expandedHeight
+		layer.stateSwitch "contracted"
 		layer.animationOptions = @animationOptions
 		layer._verticalIndex = verticalPageIndex
 		layer._originalY = layer.y
 		@height = _.last(@children).maxY
 
-		clickTarget.onClick ->
-			layer = @
+		clickTarget.onClick (event, target) =>
 			if layer.parent is null
 				throw new Error "The click target must be the child of an Accordion layer."
 
@@ -82,10 +85,15 @@ class exports.Accordion extends Layer
 				layer = layer.parent
 				if layer.parent is null
 					throw new Error "The click target must be the child of an Accordion layer."
-			if layer.states.current.name is "default"
+	
+			# trigger onItemTapped ->
+			@emit(Events.AccordionItemTapped, layer, layer.ordinal, layer.states.current.name)
+			
+			if layer.states.current.name in ["default","contracted"]
 				layer.parent.expandItem layer
 			else
 				layer.parent.contractItem layer
+
 
 	layoutItems: (animateLayer = true)->
 		runningTop = 0
@@ -129,5 +137,6 @@ class exports.Accordion extends Layer
 				@layoutItems()	
 
 	# event helpers
-	onExpand: (cb) -> @on(Events.AccordionExpand, cb)
-	onContract: (cb) -> @on(Events.AccordionContract, cb)
+	onItemExpanded: (cb) -> @on(Events.AccordionItemExpanded, cb)
+	onItemContracted: (cb) -> @on(Events.AccordionItemContracted, cb)
+	onItemTapped: (cb) -> @on(Events.AccordionItemTapped, cb)
