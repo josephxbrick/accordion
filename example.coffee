@@ -1,7 +1,7 @@
 # author: Joseph Brick
 # repository: https://github.com/josephxbrick/accordion
 
-# create empty accordion
+# create empty accordion that expands only one item at a time
 accordion = new Accordion
 	width: Screen.width - 20
 	x: Align.center
