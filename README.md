@@ -93,18 +93,27 @@ for i in [0...5]
 		name: "layer_#{i}"
 		width: accordion.width
 		height: 50
-		backgroundColor: Utils.randomColor()
+		backgroundColor: Utils.randomColor(0.67)
 	# make expand/contract button as child of layer above
 	expandButton = new Layer
 		parent: layer
 		name: "expand_button"
 		size: 30
 		x: 10
-		backgroundColor: "#222222"
+		backgroundColor: "#555555"
 		blending: Blending.overlay
+		opacity: 0.5
 		y: Align.center
-	# add layer to accordion: expandedHeight:200, contractedHeight:50, clickTarget:expandButton
-	accordion.addItem layer, 200, 50, expandButton
+	# accordion.addItem(layerToAdd, expandedHeight, contractedHeight, clickTarget)
+	accordion.addItem layer, Utils.randomNumber(120, 400), 50, expandButton
+	
+# handle onItemExpanded event
+accordion.onItemExpanded (layer, newHeight, oldHeight) ->
+	print "#{layer.name} expanded; new height:#{newHeight}; old height:#{oldHeight}" 
+	
+# handle onItemContracted event
+accordion.onItemContracted (layer, newHeight, oldHeight) ->
+	print "#{layer.name} contracted; new height:#{newHeight}; old height:#{oldHeight}" 
 ```
 ## Sample Framer.js Project
 * [accordion.framer](https://framer.cloud/tIdTw)
