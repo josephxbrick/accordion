@@ -2,11 +2,10 @@
 # repository: https://github.com/josephxbrick/accordion
 
 class exports.Accordion extends Layer
-
 	# events
 	Events.AccordionItemExpanded  = "accordionExpand"
 	Events.AccordionItemContracted = "accordionContract"
-
+	Events.AccordionTransitionComplete = "accordionTransitionComplete"
 	constructor: (@o = {}) ->
 		_.defaults @o,
 			spacing: 1
@@ -74,6 +73,9 @@ class exports.Accordion extends Layer
 		layer.animationOptions = @animationOptions
 		layer._verticalIndex = verticalPageIndex
 		layer._originalY = layer.y
+		layer.onAnimationEnd (event, layer)=>
+			@emitCompleteMessage(layer)
+
 		@height = _.last(@children).maxY
 
 		clickTarget.onClick (event, target) =>
@@ -90,7 +92,9 @@ class exports.Accordion extends Layer
 			else
 				layer.parent.contractItem layer
 
-
+	emitCompleteMessage: Utils.debounce 0.01, ->
+		@emit Events.AccordionTransitionComplete, @
+		
 	layoutItems: (animateLayer = true)->
 		runningTop = 0
 		for tile in @children
@@ -135,3 +139,4 @@ class exports.Accordion extends Layer
 	# event helpers
 	onItemExpanded: (cb) -> @on(Events.AccordionItemExpanded, cb)
 	onItemContracted: (cb) -> @on(Events.AccordionItemContracted, cb)
+	onTransitionComplete: (cb) -> @on(Events.AccordionTransitionComplete, cb)
